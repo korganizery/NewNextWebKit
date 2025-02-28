@@ -27,13 +27,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: '订阅对象或消息缺失' }, { status: 400 });
     }
 
+    
     // 使用 web-push 发送通知
     await webpush.sendNotification(subscriptionJson, JSON.stringify({
       title: '通知标题',
       body: message,
       icon: '/icon-192x192.png',
     }));
-    console.log("oldJson", obj);
     console.log("subscription", subscriptionJson);
     console.log("message", message);
     
